@@ -117,6 +117,16 @@ class Calendar extends Component {
     this.setState({ events: updatedEvents });
   }
 
+  multiCall() {
+    this.deleteEvent();
+    this.handleClose();
+  }
+
+  multiCall2() {
+    this.setNewAppointment();
+    this.handleClose();
+  }
+
   render() {
     console.log("render()");
     const eventActions = [
@@ -131,16 +141,15 @@ class Calendar extends Component {
         secondary={true}
         keyboardFocused={true}
         onClick={() => {
-          this.deleteEvent(), this.handleClose();
+          this.multiCall()
         }}
       />,
       <FlatButton
         label="Confirm Edit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
         onClick={() => {
-          this.updateEvent(), this.handleClose();
+          this.multiCall();
         }}
       />
     ];
@@ -151,7 +160,7 @@ class Calendar extends Component {
         primary={true}
         keyboardFocused={true}
         onClick={() => {
-          this.setNewAppointment(), this.handleClose();
+          this.multiCall2()
         }}
       />
     ];
